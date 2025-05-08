@@ -1,115 +1,117 @@
-
-
-function formatString(input:string,toUpper?:boolean){
-    if (toUpper===true || toUpper===undefined){
-        return input.toUpperCase()
-    } else {
-        return input.toLowerCase()
-    }
-}
-
-
-
-function filterByRating(items:{title:string;rating:number}[]):{title:string;rating:number}[]{
-    return items.filter((item:{title:string;rating:number})=>item.rating>=4)
-}
-
-
-function concatenateArrays<T>(...arrays:T[][]):T[]{
-    const result:T[] = []
-
-    arrays.forEach((array:T[])=>{
-        result.push(...array)
-    })
-    return result
-
-}
-
-
-class Vehicle {
-    private make:string;
-    private year:number;
-
-    constructor(make:string,year:number){
-        this.make = make;
-        this.year = year
+{
+    
+    function formatString(input:string,toUpper?:boolean):string{
+        if (toUpper===true || toUpper===undefined){
+            return input.toUpperCase()
+        } else {
+            return input.toLowerCase()
+        }
     }
 
-    getInfo () {
-        return `Make: ${this.make}, Year: ${this.year}`
+
+
+    function filterByRating(items:{title:string;rating:number}[]):{title:string;rating:number}[]{
+        return items.filter((item:{title:string;rating:number})=>item.rating>=4)
     }
 
-}
 
+    function concatenateArrays<T>(...arrays:T[][]):T[]{
+        const result:T[] = []
 
-class Car extends Vehicle {
-    private model:string;
-    constructor(make:string,year:number,model:string){
-        super(make,year)
-        this.model = model
-    }
-    getModel():string{
-        return `Model: ${this.model}`
-    }
-}
-
-
-
-function processValue(value:string | number):number{
-    return typeof value==="string" ? value.length : 2*value
-}
-
-
-
-interface Product {
-    name:string;
-    price:number
-}
-
-function getMostExpensiveProduct(products:Product[]):Product | null{
-    if (products.length>0){
-        const result = products.reduce((acc:Product,curr:Product)=>{
-            if (acc.price<curr.price){
-                acc=curr
-            }
-            return acc
+        arrays.forEach((array:T[])=>{
+            result.push(...array)
         })
         return result
 
-    }else {
-        return null
     }
-}
 
 
+    class Vehicle {
+        private make:string;
+        private year:number;
 
-enum Day {
-    Monday,
-    Tuesday,
-    Wednesday,
-    Thursday,
-    Friday,
-    Saturday,
-    Sunday
-}
-
-function getDayType(day:Day):string{
-    if (day===Day.Saturday || day===Day.Sunday){
-        return "Weekend"
-    }else {
-        return "Weekday"
-    }
-}
-
-
-async function squareAsync(n:number):Promise<number>{
-    return  new Promise ((resolve,reject)=>{
-        if (n >0 ){
-            setTimeout(()=>{
-                resolve(n*n)
-            },1000)
-        }else{
-            reject("Negetive number not allowed")
+        constructor(make:string,year:number){
+            this.make = make;
+            this.year = year
         }
-    })
+
+        getInfo () {
+            console.log(`Make: ${this.make}, Year: ${this.year}`)
+        }
+
+    }
+
+
+    class Car extends Vehicle {
+        private model:string;
+        constructor(make:string,year:number,model:string){
+            super(make,year)
+            this.model = model
+        }
+        getModel() {
+            console.log(`Model: ${this.model}`)
+        }
+    }
+
+
+
+    function processValue(value:string | number):number{
+        return typeof value==="string" ? value.length : 2*value
+    }
+
+
+
+    interface Product {
+        name:string;
+        price:number
+    }
+
+    function getMostExpensiveProduct(products:Product[]):Product | null{
+        if (products.length>0){
+            const result = products.reduce((acc:Product,curr:Product)=>{
+                if (acc.price<curr.price){
+                    acc=curr
+                }
+                return acc
+            })
+            return result
+
+        }else {
+            return null
+        }
+    }
+
+
+
+    enum Day {
+        Monday,
+        Tuesday,
+        Wednesday,
+        Thursday,
+        Friday,
+        Saturday,
+        Sunday
+    }
+
+    function getDayType(day:Day):string{
+        if (day===Day.Saturday || day===Day.Sunday){
+            return "Weekend"
+        }else {
+            return "Weekday"
+        }
+    }
+
+
+    async function squareAsync(n:number):Promise<number>{
+        return  new Promise ((resolve,reject)=>{
+            if (n >0 ){
+                setTimeout(()=>{
+                    resolve(n*n)
+                },1000)
+            }else{
+                reject("Negetive number not allowed")
+            }
+        })
+    }
+
 }
