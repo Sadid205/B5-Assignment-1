@@ -8,32 +8,11 @@ function formatString(input:string,toUpper?:boolean){
     }
 }
 
-const outputFormatString1 =  formatString("Hello")
-const outputFormatString2 =  formatString("Hello",true)
-const outputFormatString3 =  formatString("Hello",false)
-console.log(outputFormatString1)
-console.log(outputFormatString2)
-console.log(outputFormatString3)
-
-
-
 
 
 function filterByRating(items:{title:string;rating:number}[]):{title:string;rating:number}[]{
     return items.filter((item:{title:string;rating:number})=>item.rating>=4)
 }
-const books = [
-    { title: "Book A", rating: 4.5 },
-    { title: "Book B", rating: 3.2 },
-    { title: "Book C", rating: 5.0 },
-    { title: "Book D", rating: 4.0 },
-  ];
-
-
-const outputFilterByRating = filterByRating(books)
-console.log(outputFilterByRating)
-
-
 
 
 function concatenateArrays<T>(...arrays:T[][]):T[]{
@@ -45,14 +24,6 @@ function concatenateArrays<T>(...arrays:T[][]):T[]{
     return result
 
 }
-
-const outputConcatenateArrays1 = concatenateArrays<string>(["a", "b"], ["c"])
-const outputConcatenateArrays2 = concatenateArrays<number>([1, 2], [3, 4], [5]); 
-console.log(outputConcatenateArrays1)
-console.log(outputConcatenateArrays2)
-
-
-
 
 
 class Vehicle {
@@ -82,24 +53,11 @@ class Car extends Vehicle {
     }
 }
 
-const myCar = new Car("Toyota", 2020, "Corolla");
-const outputCar1 = myCar.getInfo();   
-const outputCar2 = myCar.getModel(); 
-console.log(outputCar1)
-console.log(outputCar2)
-
-
 
 
 function processValue(value:string | number):number{
     return typeof value==="string" ? value.length : 2*value
 }
-
-const outputProcessValue1 = processValue("hello"); 
-const outputProcessValue2 = processValue(10);     
-console.log(outputProcessValue1)
-console.log(outputProcessValue2)
-
 
 
 
@@ -123,16 +81,6 @@ function getMostExpensiveProduct(products:Product[]):Product | null{
     }
 }
 
-const products = [
-    { name: "Pen", price: 10 },
-    { name: "Notebook", price: 25 },
-    { name: "Bag", price: 50 }
-  ];
-
-const output = getMostExpensiveProduct(products);
-console.log(output)
-
-
 
 
 enum Day {
@@ -153,13 +101,6 @@ function getDayType(day:Day):string{
     }
 }
 
-const outputGetDayType1 = getDayType(Day.Monday);  
-const outputGetDayType2 = getDayType(Day.Sunday); 
-console.log(outputGetDayType1)
-console.log(outputGetDayType2)
-
-
-
 
 async function squareAsync(n:number):Promise<number>{
     return  new Promise ((resolve,reject)=>{
@@ -172,7 +113,3 @@ async function squareAsync(n:number):Promise<number>{
         }
     })
 }
-
- 
-squareAsync(4).then(console.log);   
-squareAsync(-3).catch(console.error); 
